@@ -17,23 +17,36 @@ C_SRC = client.c
 C_OBJ = $(C_SRC:%.c=$(O_DIR)%.o)
 C_NAME = client
 
+### Libft
+LIBFT= superLibft/libft.a
+LIBPATH= superLibft/
+L_OBJ= superLibft/.tmp
 
-all: $(S_NAME) $(C_NAME)
+
+all: $(LIBFT) $(S_NAME) $(C_NAME)
 
 $(S_NAME): $(S_OBJ) $(OBJ)
-	@$(CC) $(S_OBJ) $(OBJ) -o $(S_NAME)
+	@$(CC) $(S_OBJ) $(OBJ) $(LIBFT) -o $(S_NAME)
 
 $(C_NAME): $(C_OBJ) $(OBJ)
-	@$(CC) $(C_OBJ) $(OBJ) -o $(C_NAME)
+	@$(CC) $(C_OBJ) $(OBJ) $(LIBFT) -o $(C_NAME)
 
 $(O_DIR)%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) -c $< -o $@
 
+$(LIBFT): $(L_OBJ)
+	
+$(L_OBJ):
+	@make --no-print-directory -C $(LIBPATH) printf
+
 clean:
+	@make --no-print-directory -C $(LIBPATH) clean
 	@rm -rf $(O_DIR)
 
-fclean: clean
+fclean:
+	@make --no-print-directory -C $(LIBPATH) fclean
+	@rm -rf $(O_DIR)
 	@rm -f $(S_NAME) $(C_NAME)
 
 re: fclean all
