@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:11:16 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/08 16:00:26 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/08 18:53:12 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,29 @@
 
 void sighandler(int signum);
 
-int main(int argc, char **argv)
+
+
+int main(void)
 {
-	int pid;
-
-	pid = getpid();
-
-	printf("Server pid: %d\n", pid);
+	printf("Server pid: %d\n", getpid());
 	
 	signal(SIGUSR1, sighandler);
+	signal(SIGUSR2, sighandler);
 	while (1)
 		pause();
-
-	(void)argc;
-	(void)argv;
 }
 
 void sighandler(int signum)
 {
-	printf("ALO %d\n", signum);
-	sleep(1);
+	static int letter = 0;
+	
+	if (signum == SIGUSR1)
+		letter++;
+	if (signum == SIGUSR2)
+	{
+		printf("%c\n", letter);
+		letter = 0;
+	}
 }
 
 // void sighandler(int signum)
