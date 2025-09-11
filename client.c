@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:11:49 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/08 20:57:13 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:16:56 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 #include "headers/client.h"
 
-void sighandler(int signum);
+void sighandler(int signum)
+{
+	ft_printf("Confirmation recieved\n");
+	exit(0);
+	(void)signum;
+}
 
 int main(int argc, char **argv)
 {
@@ -28,16 +33,18 @@ int main(int argc, char **argv)
 
 	pid = atoi(argv[1]);
 	str = argv[2];
-	printf ("PID: %d\nSTR: %s\n", pid, str);
-	//kill(pid, SIGUSR1);
-	int i = str[0];
-	int j = 0;
+	ft_printf ("SERVER PID: %d\nCLIENT PID: %d\nSTR: %s\n", pid, getpid(), str);
+	kill(pid, SIGUSR1);
+	signal(SIGUSR1, sighandler);
+	pause();
+	// int i = str[0];
+	// int j = 0;
 
-	while (j++ < i)
-	{
-		usleep(100);
-		kill(pid, SIGUSR1);
-		usleep(100);
-	}
-	kill(pid, SIGUSR2);
+// 	while (j++ < i)
+// 	{
+// 		usleep(100);
+// 		kill(pid, SIGUSR1);
+// 		usleep(100);
+// 	}
+// 	kill(pid, SIGUSR2);
 }
