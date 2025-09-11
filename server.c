@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:11:16 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/11 12:33:25 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/11 12:43:40 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,3 @@ void sighandler(int signum)
 		letter = 0;
 	}
 }
-
-// void sighandler(int signum)
-// {
-// 	printf("OLA%d\n", signum);
-// 	sleep(1);
-// 	exit(1);
-// }
