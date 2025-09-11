@@ -71,7 +71,6 @@ $(NAME): $(OBJ)
 # 	@echo ".\033[0m"
 # 	@sleep 0.4
 	@ar rsc $(NAME) $(OBJ)
-	@mkdir .tmp
 # 	@art/./ascii_art.sh
 # 	@sleep 0.5
 # 	@art/./ascii_art_text.sh
@@ -111,7 +110,6 @@ clean:
 # 	@echo ".\033[0m"
 # 	@sleep 0.2
 	@rm -rf $(O_DIR)
-	@rm -rf .tmp
 
 fclean: clean
 # 	@echo "\033[95mCleansing Libft Library"

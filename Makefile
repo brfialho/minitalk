@@ -20,7 +20,6 @@ C_NAME = client
 ### Libft
 LIBFT= superLibft/libft.a
 LIBPATH= superLibft/
-L_OBJ= superLibft/.tmp
 
 
 all: $(LIBFT) $(S_NAME) $(C_NAME)
@@ -35,9 +34,7 @@ $(O_DIR)%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) -c $< -o $@
 
-$(LIBFT): $(L_OBJ)
-	
-$(L_OBJ):
+$(LIBFT):
 	@make --no-print-directory -C $(LIBPATH) printf
 
 clean:
@@ -50,3 +47,5 @@ fclean:
 	@rm -f $(S_NAME) $(C_NAME)
 
 re: fclean all
+
+.PHONY: $(LIBFT) re fclean clean

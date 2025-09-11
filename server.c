@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:11:16 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/08 18:53:12 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/11 12:33:25 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,32 @@ void sighandler(int signum);
 
 
 
-int main(void)
+// SERVER
+// 		GET PID
+//      PAUSE
+//      LETRA / C
+//      SEND
+//		LETRA /C
+//		SEND
+//      ...
+//		LETRA / 100
+//		GET PID / PAUSE
+
+
+
+// CLIENT
+//		100
+
+// SEND
+// PAUSE
+// SEND
+// PAUSE
+// ...
+// SEND 100
+// END
+
+
+int main(void) 
 {
 	printf("Server pid: %d\n", getpid());
 	
