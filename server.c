@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:11:16 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/11 15:11:27 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:08:26 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void listen_for_pid(void)
 	sa.sa_sigaction = get_client_pid;
 	sa.sa_flags = SA_SIGINFO;
 
-	sigaction(SIGUSR1, &sa, NULL);
+	if (sigaction(SIGUSR1, &sa, NULL) && ft_printf("Error in sigaction"))
+		exit(1);
 	pause();
 }
 
@@ -71,5 +72,5 @@ int main(void)
 {
 	ft_printf("SERVER PID: %d\n", getpid());
 	listen_for_pid();
-	ft_printf("CLIENT PID: %d\n", g_client_pid);
+	//listen_for_string();
 }

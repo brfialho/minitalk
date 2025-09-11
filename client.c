@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:11:49 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/11 15:16:56 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/11 19:13:18 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ int main(int argc, char **argv)
 	kill(pid, SIGUSR1);
 	signal(SIGUSR1, sighandler);
 	pause();
+
+	// itob 97 -> 01010110
+	// btoa = 01010110 -> "01010110"
+	// send
+	// atob = "01010110" -> 97
+	
 	// int i = str[0];
 	// int j = 0;
 
