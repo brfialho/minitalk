@@ -6,12 +6,14 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:20:41 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/11 14:15:00 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/12 16:58:01 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef CLIENT_H
  # define CLIENT_H
+ 
+ # define BYTE_SIZE 8
  
  #include <unistd.h>
  #include <stdlib.h>
