@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 08:58:22 by brfialho          #+#    #+#             */
-/*   Updated: 2025/08/12 18:05:43 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/11 19:40:16 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*gnl_append(char **left, int fd, char *buffer)
 		left[fd] = gnl_strdup("");
 	if (!left[fd])
 		return (0);
-	new = gnl_calloc(gnl_strlen(left[fd]) + gnl_strlen(buffer) + 1, sizeof(char));
+	new = gnl_calloc(gnl_slen(left[fd]) + gnl_slen(buffer) + 1, sizeof(char));
 	if (!new)
 		return (0);
 	i = 0;
@@ -60,7 +60,7 @@ char	*gnl_get_line(char **left, int fd)
 
 	len = gnl_eol(left[fd]);
 	if (!len)
-		len = gnl_strlen(left[fd]);
+		len = gnl_slen(left[fd]);
 	line = gnl_calloc(len + 1, sizeof(char));
 	if (!line)
 		return (gnl_free(&left[fd]), NULL);

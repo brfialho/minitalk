@@ -43,6 +43,8 @@ SRC= srcs/ft_isalnum.c \
 	srcs/ft_lstclear_bonus.c \
 	srcs/ft_lstiter_bonus.c \
 	srcs/ft_lstmap_bonus.c \
+	srcs/ft_atoi_base.c \
+	srcs/ft_itoa_base.c \
 	gnl/get_next_line.c \
 	gnl/get_next_line_utils.c \
 	srcs/ft_lstadd_front_bonus.c
@@ -62,24 +64,24 @@ endif
 all: $(NAME)
 	
 $(NAME): $(OBJ)
-# 	@echo "\033[95m\n### Rolling for Libft Construction ###"
-# 	@sleep 1.5
-# 	@echo "."
-# 	@sleep 0.4
-# 	@echo "."
-# 	@sleep 0.4
-# 	@echo ".\033[0m"
-# 	@sleep 0.4
+	@echo "\033[95m\n### Rolling for Library Construction ###"
+	@sleep 1.5
+	@echo "."
+	@sleep 0.4
+	@echo "."
+	@sleep 0.4
+	@echo ".\033[0m"
+	@sleep 0.4
 	@ar rsc $(NAME) $(OBJ)
-# 	@art/./ascii_art.sh
-# 	@sleep 0.5
-# 	@art/./ascii_art_text.sh
+	@art/./ascii_art.sh
+	@sleep 0.5
+	@art/./ascii_art_text.sh
 
 $(O_DIR)%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CCFLAGS) -c $< -o $@
-# 	@echo "\033[95mCompiling\033[0m $(notdir $<)"
-# 	@sleep 0.0001
+	@echo "\033[95mCompiling\033[0m $(notdir $<)"
+	@sleep 0.0001
 # 	@if [ "`basename $<`" = "ft_strlen.c" ]; then \
 # 		echo  "\033[31;1m!! CRITICAL ERROR !!"; \
 # 		sleep 2; \
@@ -101,25 +103,25 @@ $(O_DIR)%.o: %.c
 # 	fi
 
 clean:
-# 	@echo "\033[95mCleansing Libft Objects"
-# 	@sleep 0.7
-# 	@echo -n "."
-# 	@sleep 0.2
-# 	@echo -n "."
-# 	@sleep 0.2
-# 	@echo ".\033[0m"
-# 	@sleep 0.2
+	@echo "\033[95mCleansing All Objects"
+	@sleep 0.7
+	@echo -n "."
+	@sleep 0.2
+	@echo -n "."
+	@sleep 0.2
+	@echo ".\033[0m"
+	@sleep 0.2
 	@rm -rf $(O_DIR)
 
 fclean: clean
-# 	@echo "\033[95mCleansing Libft Library"
-# 	@sleep 0.7
-# 	@echo -n "."
-# 	@sleep 0.2
-# 	@echo -n "."
-# 	@sleep 0.2
-# 	@echo ".\033[0m"
-# 	@sleep 0.2
+	@echo "\033[95mCleansing Library"
+	@sleep 0.7
+	@echo -n "."
+	@sleep 0.2
+	@echo -n "."
+	@sleep 0.2
+	@echo ".\033[0m"
+	@sleep 0.2
 	@rm -f $(NAME)
 
 re: fclean all

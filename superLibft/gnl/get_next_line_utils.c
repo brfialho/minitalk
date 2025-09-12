@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 11:48:44 by brfialho          #+#    #+#             */
-/*   Updated: 2025/08/12 18:05:53 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/11 19:41:56 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*gnl_calloc(size_t nmemb, size_t size)
 	return (array);
 }
 
-size_t	gnl_strlen(char *s)
+size_t	gnl_slen(char *s)
 {
 	size_t	len;
 
@@ -67,7 +67,7 @@ char	*gnl_strdup(char	*s)
 	char	*new;
 	int		i;
 
-	new = gnl_calloc(gnl_strlen(s) + 1, sizeof(char));
+	new = gnl_calloc(gnl_slen(s) + 1, sizeof(char));
 	if (!new)
 		return (NULL);
 	i = -1;

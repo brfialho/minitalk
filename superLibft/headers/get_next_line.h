@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 20:14:15 by brfialho          #+#    #+#             */
-/*   Updated: 2025/08/12 17:15:54 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/11 19:40:40 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*gnl_get_line(char **left, int fd);
 char	*get_next_line(int fd);
 char	*gnl_strdup(char	*s);
 
-size_t	gnl_strlen(char *s);
+size_t	gnl_slen(char *s);
 
 int		gnl_eol(char *s);
 int		gnl_free(char **s);
