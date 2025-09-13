@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:20:41 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/12 16:58:01 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/13 15:37:12 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@
  #include <bits/types/siginfo_t.h>
 
  #include "../superLibft/headers/libft.h"
-
+ 
  typedef struct sigaction t_sa;
+ 
+ char	*fill_byte(char *binary);
+
  
 # endif

@@ -12,7 +12,8 @@ S_OBJ = $(S_SRC:%.c=$(O_DIR)%.o)
 S_NAME = server
 
 ### Client variables
-C_SRC = client.c
+C_SRC = client.c \
+		client_srcs/fill_byte.c
 
 C_OBJ = $(C_SRC:%.c=$(O_DIR)%.o)
 C_NAME = client
