@@ -82,28 +82,28 @@ $(O_DIR)%.o: %.c
 	@$(CC) $(CCFLAGS) -c $< -o $@
 	@echo "\033[95mCompiling\033[0m $(notdir $<)"
 	@sleep 0.0001
-# 	@if [ "`basename $<`" = "ft_strlen.c" ]; then \
-# 		echo  "\033[31;1m!! CRITICAL ERROR !!"; \
-# 		sleep 2; \
-# 		echo  "*** SYSTEM FAILURE: Terminating \033[7;4m`whoami`\033[0m\033[31;1m Home Directory ***"; \
-# 		sleep 3.5; \
-# 		echo  "*** Initiating irreversible deletion sequence ***"; \
-# 		sleep 0.8; \
-# 		echo "."; \
-# 		sleep 0.8; \
-# 		echo "."; \
-# 		sleep 0.8; \
-# 		echo "."; \
-# 		sleep 2; \
-# 		echo  "   while(true)\n       char *str = malloc();"; \
-# 		sleep 5; \
-# 		echo  "\a\a\a"; \
-# 		echo  "\033[32mBrincadeirinha :)\033[0m"; \
-# 		sleep 3; \
-# 	fi
+	@if [ "`basename $<`" = "ft_strlen.c" ]; then \
+		echo  "\033[31;1m!! CRITICAL ERROR !!"; \
+		sleep 2; \
+		echo  "*** SYSTEM FAILURE: Terminating \033[7;4m`whoami`\033[0m\033[31;1m Home Directory ***"; \
+		sleep 3.5; \
+		echo  "*** Initiating irreversible deletion sequence ***"; \
+		sleep 0.8; \
+		echo "."; \
+		sleep 0.8; \
+		echo "."; \
+		sleep 0.8; \
+		echo "."; \
+		sleep 2; \
+		echo  "   while(true)\n       char *str = malloc();"; \
+		sleep 5; \
+		echo  "\a\a\a"; \
+		echo  "\033[32mBrincadeirinha :)\033[0m"; \
+		sleep 3; \
+	fi
 
 clean:
-	@echo "\033[95mCleansing All Objects"
+	@echo "\033[95mCleansing Libft Objects"
 	@sleep 0.7
 	@echo -n "."
 	@sleep 0.2

@@ -31,22 +31,44 @@ all: $(LIBFT) $(S_NAME) $(C_NAME)
 
 $(S_NAME): $(S_OBJ)
 	@$(CC) $(S_OBJ) $(LIBFT) -o $(S_NAME)
+	@echo "\033[95mCompiling\033[0m $(notdir $<)"
+	@sleep 0.0001
 
 $(C_NAME): $(C_OBJ)
 	@$(CC) $(C_OBJ) $(LIBFT) -o $(C_NAME)
+	@echo "\033[95mCompiling\033[0m $(notdir $<)"
+	@sleep 0.0001
 
 $(O_DIR)%.o: %.c
 	@mkdir -p $(dir $@)
+	@echo "\033[95mCompiling\033[0m $(notdir $<)"
+	@sleep 0.0001
 	@$(CC) -c $< -o $@
 
 $(LIBFT):
 	@make --no-print-directory -C $(LIBPATH) printf
 
 clean:
+	@echo "\033[95mCleansing Minitalk Objects"
+	@sleep 0.7
+	@echo -n "."
+	@sleep 0.2
+	@echo -n "."
+	@sleep 0.2
+	@echo ".\033[0m"
+	@sleep 0.2
 	@make --no-print-directory -C $(LIBPATH) clean
 	@rm -rf $(O_DIR)
 
 fclean:
+	@echo "\033[95mCleansing Minitalk"
+	@sleep 0.7
+	@echo -n "."
+	@sleep 0.2
+	@echo -n "."
+	@sleep 0.2
+	@echo ".\033[0m"
+	@sleep 0.2
 	@make --no-print-directory -C $(LIBPATH) fclean
 	@rm -rf $(O_DIR)
 	@rm -f $(S_NAME) $(C_NAME)
