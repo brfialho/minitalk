@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   listen_for_string.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 17:11:16 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/14 00:18:57 by brfialho         ###   ########.fr       */
+/*   Created: 2025/09/13 23:21:06 by brfialho          #+#    #+#             */
+/*   Updated: 2025/09/14 00:16:59 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/server.h"
+#include "../headers/server.h"
 
-t_mini	g_mini;
-
-int	main(void)
+void	listen_for_string(void)
 {
-	ft_printf("\n#######  SERVER PID: %d  #######\n\n", getpid());
-	mini_init();
-	listen_for_string();
-	while (1)
-		pause();
+	t_sa	sa;
+
+	sigemptyset(&sa.sa_mask);
+	sa.sa_sigaction = get_binary;
+	sa.sa_flags = SA_SIGINFO;
+	if (sigaction(SIGUSR1, &sa, NULL) && ft_printf("Sigaction Err 2\n"))
+		exit(2);
+	if (sigaction(SIGUSR2, &sa, NULL) && ft_printf("Sigaction Err 3\n"))
+		exit(3);
 }

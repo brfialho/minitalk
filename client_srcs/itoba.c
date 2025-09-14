@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_byte.c                                        :+:      :+:    :+:   */
+/*   itoba.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/13 15:32:22 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/14 00:13:44 by brfialho         ###   ########.fr       */
+/*   Created: 2025/09/13 23:14:21 by brfialho          #+#    #+#             */
+/*   Updated: 2025/09/14 00:14:54 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../superLibft/headers/libft.h"
 #include "../headers/client.h"
 
-unsigned char	*fill_byte(unsigned char *binary)
+static int	count_digits(int n)
 {
-	int				i;
-	int				len;
-	unsigned char	*new;
+	int	count;
 
+	count = 1;
+	while (n / 2 && count++)
+		n /= 2;
+	return (count);
+}
+
+unsigned char	*itoba(int n)
+{
+	unsigned char	*binary;
+	int				len;
+
+	len = count_digits(n);
+	binary = ft_calloc(len + 1, sizeof(unsigned char));
 	if (!binary)
 		return (0);
-	len = ft_strlen((char *)binary);
-	if (len == BYTE_SIZE)
-		return (binary);
-	new = ft_calloc(BYTE_SIZE + 1, sizeof(char));
-	if (!new)
-		return (ft_free((char **)&binary), NULL);
-	i = 0;
-	while (i < BYTE_SIZE)
+	while (len-- && n / 2)
 	{
-		if (i < BYTE_SIZE - len)
-			new[i++] = '0';
-		else
-			new[i++] = *binary++;
+		binary[len] = "01"[n % 2];
+		n /= 2;
 	}
-	free(binary - len);
-	return (new);
+	binary[len] = "01"[n % 2];
+	return (binary);
 }

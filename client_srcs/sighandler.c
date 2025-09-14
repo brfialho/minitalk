@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   sighandler.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 17:11:16 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/14 00:18:57 by brfialho         ###   ########.fr       */
+/*   Created: 2025/09/13 23:13:47 by brfialho          #+#    #+#             */
+/*   Updated: 2025/09/14 00:15:16 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/server.h"
+#include "../headers/client.h"
 
-t_mini	g_mini;
-
-int	main(void)
+void	sighandler(int signum)
 {
-	ft_printf("\n#######  SERVER PID: %d  #######\n\n", getpid());
-	mini_init();
-	listen_for_string();
-	while (1)
-		pause();
+	static int	i = 0;
+	static int	n = -1;
+
+	usleep(250);
+	if (!(i % 8))
+		n++;
+	ft_printf("Confirmation %d recieved. %d chars send\n", i++, n);
+	(void)signum;
 }
