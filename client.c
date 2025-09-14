@@ -6,60 +6,87 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:11:49 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/13 17:43:01 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/13 23:09:52 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 #include "headers/client.h"
+
+static int	count_digits(int n)
+{
+	int	count;
+
+	count = 1;
+	while (n / 2 && count++)
+		n /= 2;
+	return (count);
+}
+
+unsigned char *itoba(int n)
+{
+	unsigned char	*binary;
+	int				len;
+
+	len = count_digits(n);
+	binary = ft_calloc(len + 1, sizeof(unsigned char));
+	if (!binary)
+		return (0);
+	while (len-- && n / 2)
+	{
+		binary[len] = "01"[n % 2];
+		n /= 2;
+	}
+	binary[len] = "01"[n % 2];
+	return (binary);
+}
 
 void sighandler(int signum)
 {
 	static int i = 0;
-	ft_printf("Confirmation %d recieved\n", i++);
+	static int n = -1;
+	
+	usleep(250);
+	if (!(i % 8))
+		n++;
+	ft_printf("Confirmation %d recieved. %d chars send\n", i++, n);
 	(void)signum;
 }
-int send_str(int pid, char* s)
+
+void send_bit(int pid, unsigned char* binary)
 {
 	int i;
-	char *binary;
+
+	i = -1;
+	while (++i < 8)
+	{
+		if (binary[i] == '0')
+			kill(pid, SIGUSR1);
+		if (binary[i] == '1')
+			kill(pid, SIGUSR2);
+		pause();
+	}
+}
+void send_str(int pid, unsigned char* s)
+{
+	unsigned char *binary;
 
 	while (*s)
 	{
-		binary = fill_byte(ft_itoa_base(*s++, "01"));
+		binary = fill_byte(itoba(*s++));
 		if (!binary)
-			return (0);
-		i = -1;
-		while (++i < 8)
-		{
-			if (binary[i] == '0' && printf (" I: %d\n", i))
-				kill(pid, SIGUSR1);
-			if (binary[i] == '1' && printf (" I: %d\n", i))
-				kill(pid, SIGUSR2);
-			pause();
-		}
+			return ;
+		send_bit(pid, binary);
 	}
+	if (!*s)
+		send_bit(pid, (unsigned char*)"00001010");
 	free(binary);
-	return (1);
 }
 int main(int argc, char **argv)
 {
-	// TO DO
-	// send pid to server then comuninacate -> pause -> comunicate...
-	int 	pid;
-	
 	if (argc != 3)
 		exit(1);
 
-	// send pid
-	pid = ft_atoi(argv[1]);;
-	ft_printf ("SERVER PID: %d\nCLIENT PID: %d\nSTR: %s\n", pid, getpid(), argv[2]);
-	
-	// acklogene pid
 	signal(SIGUSR1, sighandler);
-	kill(pid, SIGUSR1);
-	pause();
-
-	send_str(pid, argv[2]);
+	send_str(ft_atoi(argv[1]), (unsigned char*)argv[2]);
+	ft_printf("\n✅ Done. No issues detected.\n");
 }
