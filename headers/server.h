@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:20:53 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/14 00:13:30 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/14 19:54:17 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 typedef struct sigaction	t_sa;
 typedef struct s_minitalk
 {
-	int		pid;
 	int		ascii;
 	char	*binary;
 }				t_mini;

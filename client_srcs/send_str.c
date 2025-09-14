@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 23:11:49 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/14 00:16:10 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/14 20:00:05 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ void	send_str(int pid, unsigned char *s)
 		send_bit(pid, binary);
 		free(binary);
 	}
-	if (!*s)
-		send_bit(pid, (unsigned char *)"00001010");
+	send_bit(pid, (unsigned char *)"00001010");
 }

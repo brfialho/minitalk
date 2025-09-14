@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 23:20:30 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/14 00:16:38 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/14 19:54:31 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	mini_init(void)
 {
-	g_mini.pid = 0;
 	g_mini.ascii = 0;
 	g_mini.binary = NULL;
 }

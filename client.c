@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:11:49 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/14 00:18:32 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/14 20:32:28 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc != 3)
+	if (argc != 3 || ft_atoi(argv[1]) < 1)
 		exit(1);
 	signal(SIGUSR1, sighandler);
 	send_str(ft_atoi(argv[1]), (unsigned char *)argv[2]);
