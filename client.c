@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:11:49 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/16 18:54:48 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:59:29 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int	main(int argc, char **argv)
 	signal(SIGUSR1, sighandler);
 	send_str(ft_atoi(argv[1]), (unsigned char *)argv[2]);
 	ft_printf("\n✅ Done.\n%d Signals recieved. %d chars sent.\n \
-		No issues detected.\n", g_client.signals, g_client.signals / 8);
+		No issues detected.\n", g_client.signals, (g_client.signals / 8) - 1);
 }
