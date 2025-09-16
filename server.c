@@ -6,18 +6,19 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:11:16 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/14 00:18:57 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:33:24 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/server.h"
 
-t_mini	g_mini;
+t_server	g_server;
 
 int	main(void)
 {
+	g_server.ascii = 0;
+	g_server.binary = NULL;
 	ft_printf("\n#######  SERVER PID: %d  #######\n\n", getpid());
-	mini_init();
 	listen_for_string();
 	while (1)
 		pause();

@@ -6,7 +6,7 @@
 /*   By: brfialho <brfialho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 17:20:41 by brfialho          #+#    #+#             */
-/*   Updated: 2025/09/13 23:58:02 by brfialho         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:38:24 by brfialho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@
 # include "../superLibft/headers/libft.h"
 
 typedef struct sigaction	t_sa;
+
+typedef struct s_minitalk_client
+{
+	int		signals;
+	int		awk;
+}				t_client;
+
+extern t_client				g_client;
 
 void			sighandler(int signum);
 void			send_str(int pid, unsigned char *s);

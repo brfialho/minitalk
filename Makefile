@@ -5,7 +5,6 @@ O_DIR = obj/
 S_SRC = server.c \
 		server_srcs/get_binary.c \
 		server_srcs/listen_for_string.c \
-		server_srcs/mini_init.c \
 		server_srcs/recreate_binary.c
 
 S_OBJ = $(S_SRC:%.c=$(O_DIR)%.o)
